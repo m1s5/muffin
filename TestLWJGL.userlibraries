@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<eclipse-userlibraries>
+  <library name="jars1">
+    <archive path="D:/Workspaces/IntelliJ/out/production/TestLWJGL/lib/jars/lwjgl.jar" />
+    <archive path="D:/Workspaces/IntelliJ/out/production/TestLWJGL/lib/jars/lwjgl_util.jar" />
+    <archive path="D:/Workspaces/IntelliJ/out/production/TestLWJGL/lib/jars/slick-util.jar" />
+  </library>
+  <library name="windows" />
+</eclipse-userlibraries>
+

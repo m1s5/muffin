@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="testlwjgl_-_копия" default="all">
+  
+  
+  <property file="testlwjgl_-_копия.properties"/>
+  <!-- Uncomment the following property if no tests compilation is needed -->
+  <!-- 
+  <property name="skip.tests" value="true"/>
+   -->
+  
+  <!-- Compiler options -->
+  
+  <property name="compiler.debug" value="on"/>
+  <property name="compiler.generate.no.warnings" value="off"/>
+  <property name="compiler.args" value=""/>
+  <property name="compiler.max.memory" value="700m"/>
+  <patternset id="ignored.files">
+    <exclude name="**/*.hprof/**"/>
+    <exclude name="**/*.pyc/**"/>
+    <exclude name="**/*.pyo/**"/>
+    <exclude name="**/*.rbc/**"/>
+    <exclude name="**/*.yarb/**"/>
+    <exclude name="**/*~/**"/>
+    <exclude name="**/.DS_Store/**"/>
+    <exclude name="**/.git/**"/>
+    <exclude name="**/.hg/**"/>
+    <exclude name="**/.svn/**"/>
+    <exclude name="**/CVS/**"/>
+    <exclude name="**/__pycache__/**"/>
+    <exclude name="**/_svn/**"/>
+    <exclude name="**/vssver.scc/**"/>
+    <exclude name="**/vssver2.scc/**"/>
+  </patternset>
+  <patternset id="library.patterns">
+    <include name="*.war"/>
+    <include name="*.swc"/>
+    <include name="*.zip"/>
+    <include name="*.egg"/>
+    <include name="*.ane"/>
+    <include name="*.jar"/>
+    <include name="*.ear"/>
+  </patternset>
+  <patternset id="compiler.resources">
+    <exclude name="**/?*.java"/>
+    <exclude name="**/?*.form"/>
+    <exclude name="**/?*.class"/>
+    <exclude name="**/?*.groovy"/>
+    <exclude name="**/?*.scala"/>
+    <exclude name="**/?*.flex"/>
+    <exclude name="**/?*.kt"/>
+    <exclude name="**/?*.clj"/>
+    <exclude name="**/?*.aj"/>
+  </patternset>
+  
+  <!-- JDK definitions -->
+  
+  <property name="jdk.bin.1.8" value="${jdk.home.1.8}/bin"/>
+  <path id="jdk.classpath.1.8">
+    <fileset dir="${jdk.home.1.8}">
+      <include name="../jdk-9.0.4!/java.activation"/>
+      <include name="../jdk-9.0.4!/java.base"/>
+      <include name="../jdk-9.0.4!/java.compiler"/>
+      <include name="../jdk-9.0.4!/java.corba"/>
+      <include name="../jdk-9.0.4!/java.datatransfer"/>
+      <include name="../jdk-9.0.4!/java.desktop"/>
+      <include name="../jdk-9.0.4!/java.instrument"/>
+      <include name="../jdk-9.0.4!/java.jnlp"/>
+      <include name="../jdk-9.0.4!/java.logging"/>
+      <include name="../jdk-9.0.4!/java.management"/>
+      <include name="../jdk-9.0.4!/java.management.rmi"/>
+      <include name="../jdk-9.0.4!/java.naming"/>
+      <include name="../jdk-9.0.4!/java.prefs"/>
+      <include name="../jdk-9.0.4!/java.rmi"/>
+      <include name="../jdk-9.0.4!/java.scripting"/>
+      <include name="../jdk-9.0.4!/java.se"/>
+      <include name="../jdk-9.0.4!/java.se.ee"/>
+      <include name="../jdk-9.0.4!/java.security.jgss"/>
+      <include name="../jdk-9.0.4!/java.security.sasl"/>
+      <include name="../jdk-9.0.4!/java.smartcardio"/>
+      <include name="../jdk-9.0.4!/java.sql"/>
+      <include name="../jdk-9.0.4!/java.sql.rowset"/>
+      <include name="../jdk-9.0.4!/java.transaction"/>
+      <include name="../jdk-9.0.4!/java.xml"/>
+      <include name="../jdk-9.0.4!/java.xml.bind"/>
+      <include name="../jdk-9.0.4!/java.xml.crypto"/>
+      <include name="../jdk-9.0.4!/java.xml.ws"/>
+      <include name="../jdk-9.0.4!/java.xml.ws.annotation"/>
+      <include name="../jdk-9.0.4!/javafx.base"/>
+      <include name="../jdk-9.0.4!/javafx.controls"/>
+      <include name="../jdk-9.0.4!/javafx.deploy"/>
+      <include name="../jdk-9.0.4!/javafx.fxml"/>
+      <include name="../jdk-9.0.4!/javafx.graphics"/>
+      <include name="../jdk-9.0.4!/javafx.media"/>
+      <include name="../jdk-9.0.4!/javafx.swing"/>
+      <include name="../jdk-9.0.4!/javafx.web"/>
+      <include name="../jdk-9.0.4!/jdk.accessibility"/>
+      <include name="../jdk-9.0.4!/jdk.attach"/>
+      <include name="../jdk-9.0.4!/jdk.charsets"/>
+      <include name="../jdk-9.0.4!/jdk.compiler"/>
+      <include name="../jdk-9.0.4!/jdk.crypto.cryptoki"/>
+      <include name="../jdk-9.0.4!/jdk.crypto.ec"/>
+      <include name="../jdk-9.0.4!/jdk.crypto.mscapi"/>
+      <include name="../jdk-9.0.4!/jdk.deploy"/>
+      <include name="../jdk-9.0.4!/jdk.deploy.controlpanel"/>
+      <include name="../jdk-9.0.4!/jdk.dynalink"/>
+      <include name="../jdk-9.0.4!/jdk.editpad"/>
+      <include name="../jdk-9.0.4!/jdk.hotspot.agent"/>
+      <include name="../jdk-9.0.4!/jdk.httpserver"/>
+      <include name="../jdk-9.0.4!/jdk.incubator.httpclient"/>
+      <include name="../jdk-9.0.4!/jdk.internal.ed"/>
+      <include name="../jdk-9.0.4!/jdk.internal.jvmstat"/>
+      <include name="../jdk-9.0.4!/jdk.internal.le"/>
+      <include name="../jdk-9.0.4!/jdk.internal.opt"/>
+      <include name="../jdk-9.0.4!/jdk.internal.vm.ci"/>
+      <include name="../jdk-9.0.4!/jdk.jartool"/>
+      <include name="../jdk-9.0.4!/jdk.javadoc"/>
+      <include name="../jdk-9.0.4!/jdk.javaws"/>
+      <include name="../jdk-9.0.4!/jdk.jcmd"/>
+      <include name="../jdk-9.0.4!/jdk.jconsole"/>
+      <include name="../jdk-9.0.4!/jdk.jdeps"/>
+      <include name="../jdk-9.0.4!/jdk.jdi"/>
+      <include name="../jdk-9.0.4!/jdk.jdwp.agent"/>
+      <include name="../jdk-9.0.4!/jdk.jfr"/>
+      <include name="../jdk-9.0.4!/jdk.jlink"/>
+      <include name="../jdk-9.0.4!/jdk.jshell"/>
+      <include name="../jdk-9.0.4!/jdk.jsobject"/>
+      <include name="../jdk-9.0.4!/jdk.jstatd"/>
+      <include name="../jdk-9.0.4!/jdk.localedata"/>
+      <include name="../jdk-9.0.4!/jdk.management"/>
+      <include name="../jdk-9.0.4!/jdk.management.agent"/>
+      <include name="../jdk-9.0.4!/jdk.management.cmm"/>
+      <include name="../jdk-9.0.4!/jdk.management.jfr"/>
+      <include name="../jdk-9.0.4!/jdk.management.resource"/>
+      <include name="../jdk-9.0.4!/jdk.naming.dns"/>
+      <include name="../jdk-9.0.4!/jdk.naming.rmi"/>
+      <include name="../jdk-9.0.4!/jdk.net"/>
+      <include name="../jdk-9.0.4!/jdk.pack"/>
+      <include name="../jdk-9.0.4!/jdk.packager"/>
+      <include name="../jdk-9.0.4!/jdk.packager.services"/>
+      <include name="../jdk-9.0.4!/jdk.plugin"/>
+      <include name="../jdk-9.0.4!/jdk.plugin.dom"/>
+      <include name="../jdk-9.0.4!/jdk.plugin.server"/>
+      <include name="../jdk-9.0.4!/jdk.policytool"/>
+      <include name="../jdk-9.0.4!/jdk.rmic"/>
+      <include name="../jdk-9.0.4!/jdk.scripting.nashorn"/>
+      <include name="../jdk-9.0.4!/jdk.scripting.nashorn.shell"/>
+      <include name="../jdk-9.0.4!/jdk.sctp"/>
+      <include name="../jdk-9.0.4!/jdk.security.auth"/>
+      <include name="../jdk-9.0.4!/jdk.security.jgss"/>
+      <include name="../jdk-9.0.4!/jdk.snmp"/>
+      <include name="../jdk-9.0.4!/jdk.unsupported"/>
+      <include name="../jdk-9.0.4!/jdk.xml.bind"/>
+      <include name="../jdk-9.0.4!/jdk.xml.dom"/>
+      <include name="../jdk-9.0.4!/jdk.xml.ws"/>
+      <include name="../jdk-9.0.4!/jdk.zipfs"/>
+      <include name="../jdk-9.0.4!/oracle.desktop"/>
+      <include name="../jdk-9.0.4!/oracle.net"/>
+    </fileset>
+  </path>
+  
+  <property name="project.jdk.home" value="${jdk.home.1.8}"/>
+  <property name="project.jdk.bin" value="${jdk.bin.1.8}"/>
+  <property name="project.jdk.classpath" value="jdk.classpath.1.8"/>
+  
+  
+  <!-- Project Libraries -->
+  
+  <path id="library.jars.classpath">
+    <pathelement location="${basedir}/lib/jars/lwjgl.jar"/>
+    <pathelement location="${basedir}/lib/jars/lwjgl_util.jar"/>
+    <pathelement location="${basedir}/lib/jars/slick-util.jar"/>
+  </path>
+  
+  <path id="library.jfugue.classpath">
+    <pathelement location="${basedir}/lib/JFugue/jfugue-4.0.3-with-musicxml.jar"/>
+    <pathelement location="${basedir}/lib/JFugue/jfugue-5.0.8.jar"/>
+  </path>
+  <!-- Register Custom Compiler Taskdefs -->
+  <property name="javac2.home" value="${idea.home}/lib"/>
+  <path id="javac2.classpath">
+    <pathelement location="${javac2.home}/javac2.jar"/>
+    <pathelement location="${javac2.home}/jdom.jar"/>
+    <pathelement location="${javac2.home}/asm-all.jar"/>
+    <pathelement location="${javac2.home}/jgoodies-forms.jar"/>
+  </path>
+  <target name="register.custom.compilers">
+    <taskdef name="javac2" classname="com.intellij.ant.Javac2" classpathref="javac2.classpath"/>
+    <taskdef name="instrumentIdeaExtensions" classname="com.intellij.ant.InstrumentIdeaExtensions" classpathref="javac2.classpath"/>
+  </target>
+  
+  <!-- Modules -->
+  
+  <import file="${basedir}/lib/module_lib.xml"/>
+  
+  <import file="${basedir}/module_testlwjgl_-_копия.xml"/>
+  
+  <target name="init" description="Build initialization">
+    <!-- Perform any build initialization in this target -->
+  </target>
+  
+  <target name="clean" depends="clean.module.lib, clean.module.testlwjgl_-_копия" description="cleanup all"/>
+  
+  <target name="build.modules" depends="init, clean, compile.module.lib, compile.module.testlwjgl_-_копия" description="build all modules"/>
+  
+  <target name="init.artifacts">
+    <property name="artifacts.temp.dir" value="${basedir}/__artifacts_temp"/>
+    <property name="artifact.output.testlwjgl_-_копия:jar" value="${basedir}/out/artifacts/TestLWJGL____jar"/>
+    <mkdir dir="${artifacts.temp.dir}"/>
+    <property name="temp.jar.path.TestLWJGL - копия.jar" value="${artifacts.temp.dir}/TestLWJGL - копия.jar"/>
+  </target>
+  
+  <target name="artifact.testlwjgl_-_копия:jar" depends="init.artifacts, compile.module.testlwjgl_-_копия, compile.module.lib" description="Build &#39;TestLWJGL - копия:jar&#39; artifact">
+    <property name="artifact.temp.output.testlwjgl_-_копия:jar" value="${artifacts.temp.dir}/TestLWJGL____jar"/>
+    <mkdir dir="${artifact.temp.output.testlwjgl_-_копия:jar}"/>
+    <jar destfile="${temp.jar.path.TestLWJGL - копия.jar}" duplicate="preserve" filesetmanifest="mergewithoutmain">
+      <zipfileset dir="${testlwjgl_-_копия.output.dir}"/>
+      <zipfileset dir="${lib.output.dir}"/>
+      <zipfileset src="${basedir}/lib/JFugue/jfugue-4.0.3-with-musicxml.jar"/>
+      <zipfileset src="${basedir}/lib/JFugue/jfugue-5.0.8.jar"/>
+      <zipfileset src="${basedir}/lib/jars/lwjgl_util.jar"/>
+      <zipfileset src="${basedir}/lib/jars/lwjgl.jar"/>
+      <zipfileset src="${basedir}/lib/jars/slick-util.jar"/>
+    </jar>
+    <copy file="${temp.jar.path.TestLWJGL - копия.jar}" tofile="${artifact.temp.output.testlwjgl_-_копия:jar}/TestLWJGL - копия.jar"/>
+  </target>
+  
+  <target name="build.all.artifacts" depends="artifact.testlwjgl_-_копия:jar" description="Build all artifacts">
+    <mkdir dir="${artifact.output.testlwjgl_-_копия:jar}"/>
+    <copy todir="${artifact.output.testlwjgl_-_копия:jar}">
+      <fileset dir="${artifact.temp.output.testlwjgl_-_копия:jar}"/>
+    </copy>
+    
+    <!-- Delete temporary files -->
+    <delete dir="${artifacts.temp.dir}"/>
+  </target>
+  
+  <target name="all" depends="build.modules, build.all.artifacts" description="build all"/>
+</project>

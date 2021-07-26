@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="module_testlwjgl_-_копия" default="compile.module.testlwjgl_-_копия">
+  <dirname property="module.testlwjgl_-_копия.basedir" file="${ant.file.module_testlwjgl_-_копия}"/>
+  
+  <property name="module.jdk.home.testlwjgl_-_копия" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.testlwjgl_-_копия" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.testlwjgl_-_копия" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.testlwjgl_-_копия" value="-encoding UTF-8 -source 1.8 -target 1.8 ${compiler.args}"/>
+  
+  <property name="testlwjgl_-_копия.output.dir" value="${module.testlwjgl_-_копия.basedir}/out/production/TestLWJGL - копия"/>
+  <property name="testlwjgl_-_копия.testoutput.dir" value="${module.testlwjgl_-_копия.basedir}/out/test/TestLWJGL - копия"/>
+  
+  <path id="testlwjgl_-_копия.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="testlwjgl_-_копия.module.production.classpath">
+    <path refid="${module.jdk.classpath.testlwjgl_-_копия}"/>
+    <path refid="library.jfugue.classpath"/>
+    <path refid="library.jars.classpath"/>
+  </path>
+  
+  <path id="testlwjgl_-_копия.runtime.production.module.classpath">
+    <pathelement location="${testlwjgl_-_копия.output.dir}"/>
+    <path refid="library.jfugue.classpath"/>
+    <path refid="library.jars.classpath"/>
+  </path>
+  
+  <path id="testlwjgl_-_копия.module.classpath">
+    <path refid="${module.jdk.classpath.testlwjgl_-_копия}"/>
+    <pathelement location="${testlwjgl_-_копия.output.dir}"/>
+    <path refid="library.jfugue.classpath"/>
+    <path refid="library.jars.classpath"/>
+  </path>
+  
+  <path id="testlwjgl_-_копия.runtime.module.classpath">
+    <pathelement location="${testlwjgl_-_копия.testoutput.dir}"/>
+    <pathelement location="${testlwjgl_-_копия.output.dir}"/>
+    <path refid="library.jfugue.classpath"/>
+    <path refid="library.jars.classpath"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.testlwjgl_-_копия">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.testlwjgl_-_копия">
+    <patternset refid="excluded.from.module.testlwjgl_-_копия"/>
+  </patternset>
+  
+  <path id="testlwjgl_-_копия.module.sourcepath">
+    <dirset dir="${module.testlwjgl_-_копия.basedir}">
+      <include name="src"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.testlwjgl_-_копия" depends="compile.module.testlwjgl_-_копия.production,compile.module.testlwjgl_-_копия.tests" description="Compile module TestLWJGL - копия"/>
+  
+  <target name="compile.module.testlwjgl_-_копия.production" depends="register.custom.compilers" description="Compile module TestLWJGL - копия; production classes">
+    <mkdir dir="${testlwjgl_-_копия.output.dir}"/>
+    <javac2 destdir="${testlwjgl_-_копия.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.testlwjgl_-_копия}/javac">
+      <compilerarg line="${compiler.args.testlwjgl_-_копия}"/>
+      <bootclasspath refid="testlwjgl_-_копия.module.bootclasspath"/>
+      <classpath refid="testlwjgl_-_копия.module.production.classpath"/>
+      <src refid="testlwjgl_-_копия.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.testlwjgl_-_копия"/>
+    </javac2>
+    
+    <copy todir="${testlwjgl_-_копия.output.dir}">
+      <fileset dir="${module.testlwjgl_-_копия.basedir}/src">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="compile.module.testlwjgl_-_копия.tests" depends="register.custom.compilers,compile.module.testlwjgl_-_копия.production" description="compile module TestLWJGL - копия; test classes" unless="skip.tests"/>
+  
+  <target name="clean.module.testlwjgl_-_копия" description="cleanup module">
+    <delete dir="${testlwjgl_-_копия.output.dir}"/>
+    <delete dir="${testlwjgl_-_копия.testoutput.dir}"/>
+  </target>
+</project>

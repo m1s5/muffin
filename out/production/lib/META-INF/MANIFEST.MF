@@ -1,0 +1,4 @@
+Manifest-Version: 1.0
+Class-Path: lib/jars/lwjgl.jar lib/JFugue/jfugue-5.0.8.jar lib
+Main-Class: Main
+

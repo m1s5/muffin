@@ -1,0 +1,234 @@
+/** import org.lwjgl.LWJGLException;
+ import org.lwjgl.input.Keyboard;
+ import org.lwjgl.input.Mouse;
+ import org.lwjgl.opengl.Display;
+ import org.lwjgl.opengl.DisplayMode;
+
+ import java.util.ArrayList;
+ import java.util.List;
+
+ import static org.lwjgl.opengl.GL11.*;
+
+
+ public class Window {
+
+ ///////////////////////////////////////////////////////////////////////////
+ // Variables
+ ///////////////////////////////////////////////////////////////////////////
+
+ public static int mousex, mousey;
+ public static int index = 0;
+ public static int indexDel = 0;
+
+
+ static public boolean oneTime, smthSelected, smthinBounds, smthinBoundsBord, aimedClearArea;
+
+ static public List<Note> notes = new ArrayList<>(index);
+
+ ///////////////////////////////////////////////////////////////////////////
+ // Constructor
+ ///////////////////////////////////////////////////////////////////////////
+
+ Window(int width, int height) {
+
+
+ try {
+ Display.setDisplayMode(new DisplayMode(width, height));
+ Display.setTitle("MuffinTest");
+ Display.create();
+ } catch (LWJGLException e) {
+ e.printStackTrace();
+ }
+
+
+ //Initialization code OpenGL
+
+ glMatrixMode(GL_PROJECTION);
+ glLoadIdentity();
+ glOrtho(0, width, height, 0, 1, -1);
+ glMatrixMode(GL_MODELVIEW);
+ Bar bar = new Bar(120);
+
+ //Cycle
+
+ while (!Display.isCloseRequested()) {
+
+ glClear(GL_COLOR_BUFFER_BIT);
+
+ // System.out.println(indexDel);
+
+ mouseInput();
+ boolsSetters();
+ bar.draw();
+
+ try {
+ indexDel = OnNote().index;
+ } catch (NullPointerException e){}
+
+ if(smthinBounds&&Mouse.isButtonDown(1)&&!oneTime) {
+
+ if(notes.get(indexDel).inBounds()) {
+
+ System.out.println(1);
+ oneTime = true;
+ Seq.delNoteFromSeq(OnNote());
+ notes.remove(indexDel);
+ Window.index--;
+ }
+ }
+
+
+ for (Note note : notes) {
+
+
+ if (note.index>indexDel){
+
+ note.index--;
+
+ }
+ note.boxMethods();
+ Seq.defaultDeletedNote();
+ }
+
+
+ //Exit & creation
+
+ createBox();
+ DelBox();
+ exit();
+
+ //Refresh
+
+ Display.update();
+ Display.sync(60);
+
+ }
+
+ Display.destroy();
+ }
+
+ ///////////////////////////////////////////////////////////////////////////
+ // Methods
+ ///////////////////////////////////////////////////////////////////////////
+
+ static boolean nearBar() {
+ if (Mouse.getX() < 10) {
+ return true;
+ }
+
+ return false;
+
+ }
+
+ static boolean inArea() {
+ if ((Mouse.getX() > 0) && (Mouse.getX() < (Main.width - Bar.barWidth)) && ((Main.height - Mouse.getY()) > 0) && ((Main.height - Mouse.getY()) < Main.height)) {
+ return true;
+ }
+ return false;
+ }
+
+ void exit() {
+ if (Keyboard.isKeyDown(Keyboard.KEY_ESCAPE)) {
+ Display.destroy();
+ System.exit(0);
+ }
+ }
+
+ void createBox() {
+ if (Mouse.isButtonDown(0) && inArea() && !oneTime && !smthSelected && !smthinBoundsBord && !Note.inChange) {
+ Window.notes.add(new Note(Window.mousex, Window.mousey, ++Window.index));
+ Window.oneTime = true;
+ Seq.addNote2Seq(notes.get(Window.index-1));
+
+ }
+
+ if (!Mouse.isButtonDown(0) && Window.oneTime) {
+ Window.oneTime = false;
+ }
+ }
+
+ void DelBox(){
+ if(Mouse.isButtonDown(1)){
+ notes.remove(OnNote());
+ }
+ }
+
+
+ ///////////////////////////////////////////////////////////////////////////
+ // Booleans
+ ///////////////////////////////////////////////////////////////////////////
+
+
+ void mouseInput() {
+ mousey = Main.height - Mouse.getY();
+ mousex = Mouse.getX();
+ }
+
+ void setSmthinBounds() {
+ smthinBounds = false;
+ for (Note note : notes) {
+ if (note.inBounds()) {
+ smthinBounds = true;
+ }
+ }
+ }
+
+ void setSmthinBoundsBord() {
+ smthinBoundsBord = false;
+ for (Note note : notes) {
+ if (note.inBoundsBord()) {
+ smthinBoundsBord = true;
+ }
+ }
+ }
+
+ void setSmthSelected() {
+ smthSelected = false;
+ for (Note note : notes) {
+ if (note.isSelected()) {
+ smthSelected = true;
+ }
+ }
+ }
+
+ void setInChange() {
+ Note.inChange = false;
+ for (Note note : notes) {
+ if (note.isInChange) {
+ Note.inChange = true;
+ }
+ }
+ }
+
+ void setAimedClearArea() {
+ aimedClearArea = false;
+ for (Note note : notes) {
+ if (!Mouse.isButtonDown(0) && !smthinBoundsBord) {
+ aimedClearArea = true;
+ }
+ }
+ }
+
+ void boolsSetters() {
+ setSmthinBounds();
+ setSmthinBoundsBord();
+ setAimedClearArea();
+ setSmthSelected();
+ setInChange();
+ nearBar();
+ inArea();
+ }
+
+ Note OnNote(){
+ if(smthinBounds){
+ for (Note note : notes) {
+
+ if(note.inBounds()){
+ return note;
+ }
+
+ }
+ } return null;
+ }
+ }
+ **/
